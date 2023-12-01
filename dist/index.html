@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="main.js" defer></script>
+    <title>Todo List</title>
+</head>
+<body>
+    <header>
+        <h1>Todo List</h1>
+    </header>
+
+    <aside class="sidebar">
+        <nav class="nav-filters">
+            <ul>
+                <li><a href="#" id="filter-all"><img src="./images/all.svg" alt="all-icon">All</a></li>
+                <li><a href="#" id="filter-today"><img src="./images/today.svg" alt="today-icon">Today</a></li>
+                <li><a href="#" id="filter-important"><img src="./images/important.svg" alt="important-icon">Important</a></li>
+                <li><a href="#" id="filter-completed"><img src="./images/completed.svg" alt="completed-icon">Completed</a></li>
+            </ul>
+                
+            <div class="nav-projects">
+                <p>Projects</p>
+                <!-- Placeholder for dynamically adding projects -->
+                <div id="project-list"></div>
+                <span class="add-project-container" tabindex="0" role="button" aria-pressed="false">
+                    <img src="./images/add.svg" alt="add-project">
+                    <span class="add-project-text">Add New Project</span>
+                </span>
+            </div>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <!-- Placeholder for dynamically added todos -->
+    </main>
+
+    <!-- Modal for Adding/Editing Todos -->
+    <div id="todo-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <form id="todo-form">
+                <div class="todo-title">
+                    <label for="todo-title">Title</label>
+                    <input type="text" id="todo-title" placeholder="Title">
+                </div>
+                <div class="todo-description">
+                    <label for="todo-description">Description</label>
+                    <textarea id="todo-description" placeholder="Description"></textarea>
+                </div>
+                <div class="todo-due-date">
+                    <label for="todo-due-date">Due Date</label>
+                    <input type="date" id="todo-due-date">
+                </div>
+                <div class="todo-priority">
+                    <label for="todo-priority">Priority</label>
+                    <select id="todo-priority">
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+                <div class="project-select">
+                    <label for="project-select">Project</label>
+                    <select id="project-select">
+                        <!-- Placeholder for dynamically adding projects -->
+                    </select>
+                </div>
+                <button id="add-todo-button" type="submit">Save Todo</button>
+            </form>
+        </div>
+
+        <div id="view-todo-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h3 id="view-todo-title"></h3>
+                <p id="view-todo-description"></p>
+                <p id="view-todo-due-date"></p>
+                <p id="view-todo-priority"></p>
+                <p id="view-todo-project"></p>
+                <p id="view-todo-status"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Adding/Editing Projects -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <form id="project-form">
+                <div class="project-name">
+                    <label for="project-name">Project Name</label>
+                    <input type="text" id="project-name" placeholder="Project Name">
+                </div>
+                <button type="submit">Save Project</button>
+            </form>
+        </div>
+
+        <div id="view-project-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h3 id="view-project-name"></h3>
+                <ul id="view-project-todos"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Confirming Actions -->
+    <div id="confirmation-dialog" class="modal">
+        <div class="modal-content">
+            <h3 id="confirmation-dialog-title">Confirm Action</h3>
+            <p id="confirmation-dialog-message">Are you sure you want to do this?</p>
+            <div class="dialog-actions">
+                <button id="confirm-button">Confirm</button>
+                <button id="cancel-button">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2023 by ProsperJohn9 <a href="https://github.com/prosperjohn9"><img src="./images/github.svg" alt="github"></a>. All rights reserved.
+    </footer>
+</body>
+</html>
