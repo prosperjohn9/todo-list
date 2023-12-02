@@ -5,6 +5,7 @@ class ProjectManager {
     constructor() {
         this.projects = Storage.loadProjects() || [];
         this.ensureDefaultProject();
+        this.linkTodosToProjects();
     }
 
     // Default project is the first project in the list
@@ -13,6 +14,15 @@ class ProjectManager {
             this.projects.push(new Project("Default Project"));
             Storage.saveProjects(this.projects);
         }
+    }
+
+    // Link todos to projects
+    linkTodosToProjects() {
+        this.projects.forEach(project => {
+            project.todos.forEach(todo => {
+                todo.project = project.id;
+            });
+        });
     }
 
     // Create a new project

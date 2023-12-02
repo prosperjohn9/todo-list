@@ -27,10 +27,10 @@ class Storage {
         const storedData = localStorage.getItem("projects");
         if (storedData) {
             const parsedData = JSON.parse(storedData);
-            return parsedData.map(projectData => {
-                // Check if projectData is not null and has a name property
+            const loadedProjects = parsedData.map(projectData => {
                 if (projectData && projectData.name) {
                     const project = new Project(projectData.name);
+                    project.id = projectData.id;
                     project.todos = projectData.todos.map(todoData => new Todo(
                         todoData.title,
                         todoData.description,
@@ -41,9 +41,17 @@ class Storage {
                     ));
                     return project;
                 }
-                // Return a default project if projectData is null or has no name property
-                return new Project("Default");
+                return new Project("Default Project");
             });
+
+            // Ensure that there is at least one project
+            loadedProjects.forEach(project => {
+                project.todos.forEach(todo => {
+                    todo.project = project.id;
+                });
+            });
+
+            return loadedProjects;
         }
         return [];
     }

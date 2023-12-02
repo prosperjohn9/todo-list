@@ -1,10 +1,12 @@
 import Todo from "./todo.js";
 import Storage from "./storage.js";
+import ProjectManager from "./projectManager.js";
 import { isToday, parseISO } from "date-fns";
 
 class TodoManager {
     constructor() { 
         this.todos = Storage.loadTodos();
+        this.projectManager = new ProjectManager();
     }
 
     // Add a Todo
@@ -18,6 +20,9 @@ class TodoManager {
         );
         this.todos.push(newTodo);
         Storage.saveTodos(this.todos);
+
+        // Add the Todo to the project
+        this.projectManager.addTodoToProject(newTodo, projectId);
     }
 
     // Delete a Todo

@@ -150,7 +150,10 @@ class TodoUI {
         document.getElementById("todo-description").value = todo.description;
         document.getElementById("todo-due-date").value = todo.dueDate;
         document.getElementById("todo-priority").value = todo.priority;
-        document.getElementById("project-select").value = todo.project;
+
+        // Select the project
+        const projectSelect = document.getElementById("project-select");
+        projectSelect.value = todo.project || "";
 
         this.currenlyEditingTodoId = todoId;
         this.openTodoModal();

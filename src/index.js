@@ -1,10 +1,15 @@
 import TodoUI from "./todoUI.js";
 import ProjectUI from "./projectUI.js";
 
-// Instantiate the UIs
-const todoUI = new TodoUI();
+// Instantiate projecr UI
 const projectUI = new ProjectUI();
 
-// Display todos and projects
-todoUI.displayAllTodos();
+// Display all projects
 projectUI.displayProjects();
+
+
+// Instantiate todo UI
+const todoUI = new TodoUI();
+
+// Display all todos
+todoUI.displayAllTodos();
