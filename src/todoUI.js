@@ -36,18 +36,6 @@ class TodoUI {
             this.addTodoFromUI();
         });
 
-        // Event listener for Todo item actions
-        document.querySelector(".main-content").addEventListener("click", (e) => {
-            const todoId = e.target.closest(".todo-item")?.dataset.todoId;
-            if (e.target.matches(".todo-view-button")) {
-                this.viewTodo(todoId);
-            } else if (e.target.matches(".todo-edit-button")) {
-                this.openEditTodoModal(todoId);
-            } else if (e.target.matches(".todo-delete-button")) {
-                this.deleteTodo(todoId);
-            }
-        })
-
         // Event listener for closing the Todo modal
         document.querySelectorAll(".close-button").forEach(button => {
             button.addEventListener("click", () => this.closeTodoModal());
@@ -59,7 +47,7 @@ class TodoUI {
                 const todoId = e.target.id.replace("todo-", "");
                 this.toggleTodoCompletion(todoId);
             }
-        })
+        });
     }
 
     // Display todos in the UI
@@ -81,25 +69,49 @@ class TodoUI {
         todoElement.dataset.todoId = todo.id;
         todoElement.innerHTML = `
             <div class="todo-info">
-                <input type="checkbox" id="todo-${todo.id}" ${todo.isCompleted ? "checked" : ""} class="todo-complete-checkbox" onchange="todoUI.toggleCompletion('${todo.id}')">
+                <input type="checkbox" id="todo-${todo.id}" ${todo.isCompleted ? "checked" : ""} class="todo-complete-checkbox">
                 <label for="todo-${todo.id}" class="todo-title">${todo.title}</label>
                 <p class="todo-description">${todo.description}</p>
                 <p class="todo-due-date">${todo.dueDate}</p>
                 <p class="todo-priority">${todo.priority}</p>
                 <p class="todo-project">${todo.project}</p>
             </div>
-            <div class="todo-actions">
-                <button onclick="todoUI.viewTodo('${todo.id}')" class="todo-view-button">
-                    <img src="./images/view.svg" alt="View Todo">
-                </button> 
-                <button onclick="todoUI.editTodo('${todo.id}')" class="todo-edit-button">
-                    <img src="./images/edit.svg" alt="Edit Todo">
-                </button>
-                <button onclick="todoUI.deleteTodo('${todo.id}')" class="todo-delete-button">
-                    <img src="./images/delete.svg" alt="Delete Todo">
-                </button>
-            </div>
         `;
+
+        // View button
+        const viewButton = document.createElement("button");
+        viewButton.className = "todo-view-button";
+        viewButton.innerHTML = '<img src="./images/view.svg" alt="View todo">';
+        viewButton.addEventListener("click", () => this.viewTodo(
+            todo.id
+        ));
+
+        // Edit button
+        const editButton = document.createElement("button");
+        editButton.className = "todo-edit-button";
+        editButton.innerHTML = '<img src="./images/edit.svg" alt="Edit todo">';
+        editButton.addEventListener("click", () => this.openEditTodoModal(
+            todo.id
+        ));
+
+        // Delete button
+        const deleteButton = document.createElement("button");
+        deleteButton.className = "todo-delete-button";
+        deleteButton.innerHTML = '<img src="./images/delete.svg" alt="Delete todo">';
+        deleteButton.addEventListener("click", () => this.deleteTodo(
+            todo.id
+        ));
+
+        // Append the buttons to action div
+        const actionDiv = document.createElement("div");
+        actionDiv.className = "todo-actions";
+        actionDiv.appendChild(viewButton);
+        actionDiv.appendChild(editButton);
+        actionDiv.appendChild(deleteButton);
+
+        // Append all elements to the todo element
+        todoElement.appendChild(actionDiv);
+        
         return todoElement;
     }
 
@@ -278,7 +290,8 @@ class TodoUI {
 
     // Display Todos for today
     displayTodosForToday() {
-        this.displayTodosUI(this.todoManager.getTodosForToday());
+        const todayTodos = this.todoManager.getTodosForToday();
+        this.displayTodosUI(todayTodos);
     }
 
     // Display completed Todos

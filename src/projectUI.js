@@ -15,18 +15,6 @@ class ProjectUI {
             this.addProjectFromUI();
         });
 
-        // Event listeners for project list actions
-        document.querySelector(".main-content").addEventListener("click", (e) => {
-            const projectId = e.target.closest(".project-item")?.dataset.projectId;
-            if (e.target.matches(".project-edit-button")) {
-                this.openEditProjectModal(projectId);
-            } else if (e.target.matches(".project-delete-button")) {
-                this.deleteProject(projectId);
-            } else if (e.target.matches(".project-view-button")) {
-                this.viewProject(projectId);
-            }
-        });
-
         // Event listener for editing a project
         document.getElementById("project-form").addEventListener("submit", (e) => {
             e.preventDefault();
@@ -59,12 +47,31 @@ class ProjectUI {
         const projectElement = document.createElement("div");
         projectElement.className = "project-item";
         projectElement.dataset.projectId = project.id;
-        projectElement.innerHTML = `
-            <span class="project-name">${project.name}</span>
-            <button class="project-view-button">View</button>
-            <button class="project-edit-button">Edit</button>
-            <button class="project-delete-button">Delete</button>
-        `;
+        
+        const projectNameSpan = document.createElement("span");
+        projectNameSpan.className = "project-name";
+        projectNameSpan.textContent = project.name;
+
+        const viewButton = document.createElement("button");
+        viewButton.className = "project-view-button";
+        viewButton.innerHTML = '<img src="./images/view.svg" alt="View project">';
+        viewButton.addEventListener("click", () => this.viewProject(project.id));
+
+        const editButton = document.createElement("button");
+        editButton.className = "project-edit-button";
+        editButton.innerHTML = '<img src="./images/edit.svg" alt="Edit project">';
+        editButton.addEventListener("click", () => this.openEditProjectModal(project.id));
+
+        const deleteButton = document.createElement("button");
+        deleteButton.className = "project-delete-button";
+        deleteButton.innerHTML = '<img src="./images/delete.svg" alt="Delete project">';
+        deleteButton.addEventListener("click", () => this.deleteProject(project.id));
+
+        projectElement.appendChild(projectNameSpan);
+        projectElement.appendChild(viewButton);
+        projectElement.appendChild(editButton);
+        projectElement.appendChild(deleteButton);
+
         return projectElement;
     }
 
