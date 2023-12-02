@@ -12,12 +12,6 @@ class ProjectUI {
         // Event listener for creating a new project
         document.getElementById("project-form").addEventListener("submit", (e) => {
             e.preventDefault();
-            this.addProjectFromUI();
-        });
-
-        // Event listener for editing a project
-        document.getElementById("project-form").addEventListener("submit", (e) => {
-            e.preventDefault();
             if (this.currentlyEditingProjectId) {
                 this.editProject();
             } else {
@@ -176,6 +170,11 @@ class ProjectUI {
 
         // Proceed with updating the project
         this.projectManager.updateProject(this.currentlyEditingProjectId, { name: updatedName });
+
+        // Reset currentlyEditingProjectId
+        this.currentlyEditingProjectId = null;
+
+        // Show feedback and close the modal
         this.showFeedback("Project updated successfully!", "success");
         this.closeProjectModal();
         this.displayProjects();

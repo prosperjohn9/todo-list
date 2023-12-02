@@ -9,8 +9,8 @@ class ProjectManager {
 
     // Default project is the first project in the list
     ensureDefaultProject() {
-        if (!this.projects.find(project => project.name === "Default")) {
-            this.projects.push(new Project("Default"));
+        if (this.projects.length === 0) {
+            this.projects.push(new Project("Default Project"));
             Storage.saveProjects(this.projects);
         }
     }
