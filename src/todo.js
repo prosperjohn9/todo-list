@@ -7,7 +7,7 @@ class Todo {
     description,
     dueDate,
     priority,
-    projectId,
+    projectName,
     isCompleted = false
   ) {
     this.id = uuidv4();
@@ -15,7 +15,7 @@ class Todo {
     this.description = description;
     this.dueDate = format(new Date(dueDate), "dd/MM/yyyy");
     this.priority = priority;
-    this.project = projectId;
+    this.project = projectName;
     this.isCompleted = isCompleted;
   }
 }

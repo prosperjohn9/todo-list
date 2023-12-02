@@ -1,6 +1,6 @@
 import Todo from "./todo.js";
 import Project from "./project.js";
-import { format, parse } from "date-fns";
+import { format, parse, parseISO } from "date-fns";
 
 class Storage {
     static saveTodos(todos) {
@@ -49,15 +49,26 @@ class Storage {
     }
 
     static formatDate(dateString) {
+        if (!dateString) {
+            console.error("Empty date string received in formatDate");
+            return null;
+        }
         try {
             // Parse the date from DD/MM/YYYY format
-            const parsedDate = parse(dateString, "dd/MM/yyyy", new Date());
+            let parsedDate; 
+
+            // Check if the date string is already in ISO format
+            if (dateString.includes("-")) {
+                parsedDate = parseISO(dateString);
+            } else {
+                parsedDate = parse(dateString, "dd/MM/yyyy", new Date());
+            }
 
             // Format the date to ISO format
             return format(parsedDate, "yyyy-MM-dd");
         } catch (error) {
-            console.error(`Error formatting date: ${error}`);
-            return dateString;
+            console.error(`Error formatting date '${dateString}': ${error}`);
+            return null;
         }
     }
 }

@@ -1,10 +1,14 @@
 import TodoManager from "./todoManager.js";
+import ProjectManager from "./projectManager.js";
+
 
 class TodoUI { 
     constructor() { 
         this.todoManager = new TodoManager();
+        this.projectManager = new ProjectManager();
         this.currenlyEditingTodoId = null;
         this.bindEventListeners();
+        this.populateProjectDropdown();
     }
 
     // Bind event listeners
@@ -33,7 +37,11 @@ class TodoUI {
         // Event listener for the add Todo form submission
         document.getElementById("todo-form").addEventListener("submit", (e) => {
             e.preventDefault();
-            this.addTodoFromUI();
+            if (this.currenlyEditingTodoId) {
+                this.editTodo();
+            } else {
+                this.addTodoFromUI();
+            }
         });
 
         // Event listener for closing the Todo modal
@@ -67,6 +75,11 @@ class TodoUI {
         const todoElement = document.createElement("div");
         todoElement.className = "todo-item";
         todoElement.dataset.todoId = todo.id;
+
+        // Get the project name
+        const project = this.projectManager.getProject(todo.project);
+        const projectName = project ? project.name : "Default Project";
+
         todoElement.innerHTML = `
             <div class="todo-info">
                 <input type="checkbox" id="todo-${todo.id}" ${todo.isCompleted ? "checked" : ""} class="todo-complete-checkbox">
@@ -74,7 +87,7 @@ class TodoUI {
                 <p class="todo-description">${todo.description}</p>
                 <p class="todo-due-date">${todo.dueDate}</p>
                 <p class="todo-priority">${todo.priority}</p>
-                <p class="todo-project">${todo.project}</p>
+                <p class="todo-project">${projectName}</p>
             </div>
         `;
 
@@ -117,6 +130,7 @@ class TodoUI {
 
     // Open the Todo modal
     openTodoModal() {
+        this.populateProjectDropdown();
         document.getElementById("todo-modal").style.display = "block";
     }
 
@@ -127,6 +141,9 @@ class TodoUI {
             alert("Todo not found.");
             return;
         }
+
+        // Populate the project dropdown
+        this.populateProjectDropdown();
 
         // Populate the edit form with the current Todo details
         document.getElementById("todo-title").value = todo.title;
@@ -195,7 +212,12 @@ class TodoUI {
         const description = document.getElementById("todo-description").value;
         const dueDate = document.getElementById("todo-due-date").value;
         const priority = document.getElementById("todo-priority").value;
-        const projectId = document.getElementById("project-select").value;
+        let projectId = document.getElementById("project-select").value;
+
+        if (!projectId) {
+            const defaultProject = this.projectManager.projects.find(project => project.name === "Default Project");
+            projectId = defaultProject ? defaultProject.id : "";
+        }
 
         this.todoManager.addTodo(
             title,
@@ -302,6 +324,26 @@ class TodoUI {
     // Display important Todos
     displayImportantTodos() {
         this.displayTodosUI(this.todoManager.getImportantTodos());
+    }
+
+    // Populate projects
+    populateProjectDropdown() {
+        const projectSelect = document.getElementById("project-select");
+        projectSelect.innerHTML = "";
+
+        // Add the default option
+        const defaultOption = document.createElement("option");
+        defaultOption.value = "";
+        defaultOption.textContent = "Select a project";
+        projectSelect.appendChild(defaultOption);
+
+        // Add project options
+        this.projectManager.projects.forEach(project => {
+            const option = document.createElement("option");
+            option.value = project.id;
+            option.textContent = project.name;
+            projectSelect.appendChild(option);
+        });
     }
 }
 
