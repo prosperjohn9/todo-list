@@ -314,7 +314,7 @@ class TodoUI {
 
     // Display all Todos
     displayAllTodos() {
-        this.displayTodosUI(this.todoManager.getAllTodos());
+        this.displayTodosUI();
     }
 
     // Display Todos for today
@@ -325,12 +325,14 @@ class TodoUI {
 
     // Display completed Todos
     displayCompletedTodos() {
-        this.displayTodosUI(this.todoManager.getCompletedTodos());
+        const completedTodos = this.todoManager.getCompletedTodos();
+        this.displayTodosUI(completedTodos);
     }
 
     // Display important Todos
     displayImportantTodos() {
-        this.displayTodosUI(this.todoManager.getImportantTodos());
+        const importantTodos = this.todoManager.getImportantTodos();
+        this.displayTodosUI(importantTodos);
     }
 
     // Populate projects

@@ -76,7 +76,9 @@ class TodoManager {
     }
 
     // Get Todos for a project
-    getTodosByProjectId(projectId) { }
+    getTodosByProjectId(projectId) { 
+        return this.todos.filter(todo => todo.project === projectId);
+    }
 }
 
 export default TodoManager;

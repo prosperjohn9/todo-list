@@ -135,12 +135,15 @@ class ProjectUI {
         const projectTodoList = document.getElementById("view-project-todos");
         projectTodoList.innerHTML = "";
 
-        project.todos.forEach(todo => {
+        // Get todos associated with the project
+        const projectTodos = this.todoManager.getTodosByProjectId(projectId);
+
+        projectTodos.forEach(todo => {
             const todoElement = document.createElement("li");
             todoElement.innerHTML = `
-                <strong>${todo.title}</strong> - 
-                Priority: ${todo.priority}, 
-                Due: ${todo.dueDate}
+                <strong>${todo.title}</strong> <br>
+                Priority: ${todo.priority} <br> 
+                Due Date: ${todo.dueDate}
             `;
             projectTodoList.appendChild(todoElement);
         });
