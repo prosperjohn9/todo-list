@@ -74,6 +74,9 @@ class TodoManager {
     getImportantTodos() {
         return this.todos.filter(todo => todo.priority === "High");
     }
+
+    // Get Todos for a project
+    getTodosByProjectId(projectId) { }
 }
 
 export default TodoManager;

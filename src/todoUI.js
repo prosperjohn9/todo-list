@@ -243,12 +243,16 @@ class TodoUI {
             return;
         }
 
+        // Find the project by ID and get the name
+        const project = this.projectManager.getProject(todo.project);
+        const projectName = project ? project.name : "Default Project";
+
         // Populate the modal with the Todo details
         document.getElementById("view-todo-title").textContent = `Title: ${todo.title}`;
         document.getElementById("view-todo-description").textContent = `Description: ${todo.description}`;
         document.getElementById("view-todo-due-date").textContent = `Due Date: ${todo.dueDate}`;
         document.getElementById("view-todo-priority").textContent = `Priority: ${todo.priority}`;
-        document.getElementById("view-todo-project").textContent = `Project: ${todo.project}`;
+        document.getElementById("view-todo-project").textContent = `Project: ${projectName}`;
         document.getElementById("view-todo-completed").textContent = `Status: ${todo.isCompleted ? "Completed" : "Not Completed"}`;
 
         // Open the modal

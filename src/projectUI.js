@@ -1,8 +1,10 @@
 import ProjectManager from "./projectManager.js";
+import TodoManager from "./todoManager.js";
 
 class ProjectUI {
     constructor() {
         this.projectManager = new ProjectManager();
+        this.todoManager = new TodoManager();
         this.currentlyEditingProjectId = null;
         this.bindEventListeners();
         this.displayProjects();
