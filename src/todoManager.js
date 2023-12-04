@@ -1,7 +1,7 @@
 import Todo from "./todo.js";
 import Storage from "./storage.js";
 import ProjectManager from "./projectManager.js";
-import { isToday, parseISO } from "date-fns";
+import { isToday, parse } from "date-fns";
 
 class TodoManager {
     constructor() { 
@@ -55,6 +55,22 @@ class TodoManager {
         }
     }
 
+    // Get filtered Todos
+    getFilteredTodos(filterType) {
+        switch (filterType) {
+            case "all":
+                return this.getAllTodos();
+            case "today":
+                return this.getTodosForToday();
+            case "important":
+                return this.getImportantTodos();
+            case "completed":
+                return this.getCompletedTodos();
+            default:
+                return this.getAllTodos();
+        }
+    }
+
     // Get all Todos
     getAllTodos() {
         return this.todos;
@@ -62,7 +78,15 @@ class TodoManager {
 
     // Get all Todos for today
     getTodosForToday() {
-        return this.todos.filter(todo => isToday(parseISO(todo.dueDate)));
+        return this.todos.filter(todo => {
+            try {
+                const todoDueDate = parse(todo.dueDate, "dd/MM/yyyy", new Date());
+                return isToday(todoDueDate);
+            } catch (error) {
+                console.error(`Error parsing date '${todo.dueDate}': ${error}`);
+                return false;
+            }
+        });
     }
 
     // Get completed Todos

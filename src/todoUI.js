@@ -14,25 +14,10 @@ class TodoUI {
     // Bind event listeners
     bindEventListeners() {
         // Event listeners for filter links
-        document.getElementById("filter-all").addEventListener("click", (e) => {
-            e.preventDefault();
-            this.displayAllTodos();
-        });
-
-        document.getElementById("filter-today").addEventListener("click", (e) => {
-            e.preventDefault();
-            this.displayTodosForToday();
-        });
-
-        document.getElementById("filter-completed").addEventListener("click", (e) => {
-            e.preventDefault();
-            this.displayCompletedTodos();
-        });
-
-        document.getElementById("filter-important").addEventListener("click", (e) => {
-            e.preventDefault();
-            this.displayImportantTodos();
-        });
+        document.getElementById("filter-all").addEventListener("click", (e) => this.handleFilterClick(e, "all"));
+        document.getElementById("filter-today").addEventListener("click", (e) => this.handleFilterClick(e, "today"));
+        document.getElementById("filter-important").addEventListener("click", (e) => this.handleFilterClick(e, "important"));
+        document.getElementById("filter-completed").addEventListener("click", (e) => this.handleFilterClick(e, "completed"));
 
         // Event listener for the add Todo form submission
         document.getElementById("todo-form").addEventListener("submit", (e) => {
@@ -58,9 +43,15 @@ class TodoUI {
         });
     }
 
+    // Handle filter clicks
+    handleFilterClick(event, filterType) {
+        event.preventDefault();
+        const filteredTodos = this.todoManager.getFilteredTodos(filterType);
+        this.displayTodosUI(filteredTodos);
+    }
+
     // Display todos in the UI
-    displayTodosUI() {
-        const todos = this.todoManager.getAllTodos();
+    displayTodosUI(todos = this.todoManager.getAllTodos()) {
         const todoContainer = document.querySelector(".main-content");
         todoContainer.innerHTML = "";
 
