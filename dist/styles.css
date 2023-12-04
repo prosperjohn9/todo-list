@@ -4,6 +4,16 @@
     padding: 0;
 }
 
+#sidebar-toggle img {
+    width: 1.5rem;
+    height: 1.5rem;
+
+}
+
+.sidebar-closed {
+    display: none;
+}
+
 header {
     text-align: center;
     margin: 0.5rem;

@@ -1,3 +1,4 @@
+import { th } from "date-fns/locale";
 import ProjectManager from "./projectManager.js";
 import TodoManager from "./todoManager.js";
 
@@ -19,6 +20,13 @@ class ProjectUI {
             } else {
                 this.addProjectFromUI();
             }
+        });
+
+        // Event listener for the add project button
+        const addProjectButton = document.querySelector(".add-project-container");
+        addProjectButton.addEventListener("click", () => {
+            this.currentlyEditingProjectId = null;
+            this.openProjectModal()
         });
 
         // Event listener for closing the project modal
@@ -44,7 +52,7 @@ class ProjectUI {
         projectElement.className = "project-item";
         projectElement.dataset.projectId = project.id;
         
-        const projectNameSpan = document.createElement("span");
+        const projectNameSpan = document.createElement("p");
         projectNameSpan.className = "project-name";
         projectNameSpan.textContent = project.name;
 
@@ -92,9 +100,9 @@ class ProjectUI {
     closeProjectModal() {
         document.getElementById("project-modal").style.display = "none";
         
-        // Reset the form
+        /*/ Reset the form
         document.getElementById("project-name").value = "";
-        this.currentlyEditingProjectId = null;
+        this.currentlyEditingProjectId = null;*/
     }
 
     // Show feedback message
