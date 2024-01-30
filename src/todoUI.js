@@ -103,6 +103,11 @@ class TodoUI {
         addTodoButton.addEventListener('click', () => {
             const todoModal = document.querySelector('#todo-modal');
             todoModal.style.display = 'block';
+
+            document.getElementById("todo-title").value = '';
+            document.getElementById("todo-description").value = '';
+            document.getElementById("todo-due-date").value = '';
+            document.getElementById("todo-priority").value = 'High';
         });
     }
 
