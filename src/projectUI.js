@@ -29,9 +29,12 @@ class ProjectUI {
             this.openProjectModal()
         });
 
+        // Event listener for cancelling the project modal 
+        document.querySelector(".cancel-button").addEventListener("click", () => this.closeProjectModal());
+
         // Event listener for closing the project modal
         document.querySelectorAll(".close-button").forEach(button => {
-            button.addEventListener("click", () => this.closeProjectModal());
+            button.addEventListener("click", () => this.closeViewProjectModal());
         }) 
     }
 
@@ -99,6 +102,11 @@ class ProjectUI {
     // Close the project modal
     closeProjectModal() {
         document.getElementById("project-modal").style.display = "none";
+    }
+
+    // Close the project modal
+    closeViewProjectModal() {
+        document.getElementById("view-project-modal").style.display = "none";
     }
 
     // Show feedback message

@@ -92,21 +92,24 @@
     <!-- Modal for Adding/Editing Projects -->
     <div id="project-modal" class="modal">
         <div class="modal-content">
-            <span class="close-button">&times;</span>
             <form id="project-form">
                 <div class="project-name">
                     <label for="project-name">Project Name</label>
                     <input type="text" id="project-name" placeholder="Project Name">
                 </div>
-                <button type="submit" class="save-project">Save Project</button>
+                <div class="project-actions">
+                    <button type="submit" class="save-project">Save Project</button>
+                    <span class="cancel-button">Cancel</span>
+                </div>
             </form>
         </div>
+    </div>
 
-        <div id="view-project-modal" class="modal">
-            <div class="modal-content">
-                <h3 id="view-project-name"></h3>
-                <ul id="view-project-todos"></ul>
-            </div>
+    <div id="view-project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 id="view-project-name"></h3>
+            <ul id="view-project-todos"></ul>
         </div>
     </div>
 

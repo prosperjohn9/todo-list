@@ -125,6 +125,115 @@ li img {
     margin: 0.2rem;
 }
 
+#project-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    color: rgb(250, 250, 250);
+    width: 18rem;
+    height: 4.8rem;
+    border-radius: 0.6rem;
+}
+
+.project-name {
+    margin-left: 0.8rem;
+    margin-top: 0.8rem;
+}
+
+#project-name {
+    width: 10rem;
+    height: 1.6rem;
+    border-radius: 0.4rem;
+    padding-left: 0.4rem;
+    border: none;
+}
+
+#project-name::placeholder {
+    color: gray;
+}
+
+.project-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.3rem;
+    margin-right: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+.cancel-button {
+    border: none;
+    color: rgb(250, 250, 250);
+    width: 4rem;
+    height: 1.2rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    background-color: rgb(230, 20, 20);
+    text-align: center;
+}
+
+.save-project {
+    border: none;
+    color: rgb(250, 250, 250);
+    width: 6rem;
+    height: 1.2rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    background-color: rgb(10, 220, 10);
+    text-align: center;
+}
+
+#confirmation-dialog {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    width: 19rem;
+    height: 6rem;
+    border-radius: 0.6rem;
+}
+
+#confirmation-dialog h3 {
+    margin-left: 0.8rem;
+    margin-top: 0.8rem;
+}
+
+#confirmation-dialog p {
+    margin-left: 0.8rem;
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.3rem;
+    margin-right: 1.2rem;
+    margin-top: 0.4rem;
+}
+
+.dialog-actions button {
+    border: none;
+    color: white;
+    width: 4rem;
+    height: 1.2rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+}
+
+#confirm-button {
+    background-color: rgb(10, 220, 10);
+}
+
+#cancel-button {
+    background-color: rgb(230, 20, 20);
+}
+
 .feedback {
     position: fixed;
     top: 0.6rem;
@@ -150,8 +259,8 @@ li img {
 }
 
 main {
-    /*grid-area: main;
-    grid-row: 2 / -2;*/
+    grid-area: main;
+    grid-row: 2 / -2;
     position: relative;
 }
 

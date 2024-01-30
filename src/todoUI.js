@@ -29,6 +29,11 @@ class TodoUI {
             }
         });
 
+        // Event listener for the cancel button
+        document.querySelector(".cancel-button").addEventListener("click", () => {
+            this.closeTodoModal();
+        });
+
         // Event listener for closing the Todo modal
         document.querySelectorAll(".close-button").forEach(button => {
             button.addEventListener("click", () => this.closeTodoModal());
