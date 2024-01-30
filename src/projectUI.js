@@ -29,7 +29,7 @@ class ProjectUI {
         });
 
         // Event listener for cancelling the project modal 
-        document.querySelector(".cancel-button").addEventListener("click", () => this.closeProjectModal());
+        document.querySelector(".cancel-project-button").addEventListener("click", () => this.closeProjectModal());
 
         // Event listener for closing the project modal
         document.querySelectorAll(".close-button").forEach(button => {
