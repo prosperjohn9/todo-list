@@ -75,6 +75,10 @@ nav a {
     margin-right: 0.4rem;
 }
 
+nav a.active {
+    background-color: #c4621d;
+}
+
 nav a:hover {
     background-color: #c4621d;
 }
