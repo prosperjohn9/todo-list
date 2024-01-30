@@ -1,4 +1,3 @@
-import { th } from "date-fns/locale";
 import ProjectManager from "./projectManager.js";
 import TodoManager from "./todoManager.js";
 
@@ -104,7 +103,7 @@ class ProjectUI {
         document.getElementById("project-modal").style.display = "none";
     }
 
-    // Close the project modal
+    // Close the view project modal
     closeViewProjectModal() {
         document.getElementById("view-project-modal").style.display = "none";
     }

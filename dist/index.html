@@ -43,7 +43,6 @@
     <!-- Modal for Adding/Editing Todos -->
     <div id="todo-modal" class="modal">
         <div class="modal-content">
-            <span class="close-button">&times;</span>
             <form id="todo-form">
                 <div class="todo-title">
                     <label for="todo-title">Title</label>
@@ -71,21 +70,24 @@
                         <!-- Placeholder for dynamically adding projects -->
                     </select>
                 </div>
-                <button id="add-todo-button" type="submit">Save Todo</button>
+                <div class="todo-actions">
+                    <button id="add-todo-button" type="submit">Save Todo</button>
+                    <span class="cancel-button">Cancel</span>
+                </div>
             </form>
         </div>
+    </div>
 
-        <div id="view-todo-modal" class="modal">
-            <div class="modal-content">
-                <span class="close-button">&times;</span>
-                <h3 id="view-todo-title"></h3>
-                <p id="view-todo-description"></p>
-                <p id="view-todo-due-date"></p>
-                <p id="view-todo-priority"></p>
-                <p id="view-todo-project"></p>
-                <p id="view-todo-status"></p>
-                <p id="view-todo-completed"></p>
-            </div>
+    <div id="view-todo-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 id="view-todo-title"></h3>
+            <p id="view-todo-description"></p>
+            <p id="view-todo-due-date"></p>
+            <p id="view-todo-priority"></p>
+            <p id="view-todo-project"></p>
+            <p id="view-todo-status"></p>
+            <p id="view-todo-completed"></p>
         </div>
     </div>
 

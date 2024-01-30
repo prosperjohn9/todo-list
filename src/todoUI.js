@@ -36,7 +36,7 @@ class TodoUI {
 
         // Event listener for closing the Todo modal
         document.querySelectorAll(".close-button").forEach(button => {
-            button.addEventListener("click", () => this.closeTodoModal());
+            button.addEventListener("click", () => this.closeViewTodoModal());
         });
 
         // Event listener for toggling Todo completion status
@@ -222,6 +222,11 @@ class TodoUI {
     // Close the Todo modal
     closeTodoModal() {
         document.getElementById("todo-modal").style.display = "none";
+    }
+
+    // Close the view Todo modal
+    closeViewTodoModal() {
+        document.getElementById("view-todo-modal").style.display = "none";
     }
 
     // Show feedback messages
