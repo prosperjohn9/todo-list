@@ -30,7 +30,7 @@ class ProjectUI {
         });
 
         // Event listener for closing the project modal
-        document.querySelectorAll(".project-modal .close-button").forEach(button => {
+        document.querySelectorAll(".close-button").forEach(button => {
             button.addEventListener("click", () => this.closeProjectModal());
         }) 
     }
@@ -99,10 +99,6 @@ class ProjectUI {
     // Close the project modal
     closeProjectModal() {
         document.getElementById("project-modal").style.display = "none";
-        
-        /*/ Reset the form
-        document.getElementById("project-name").value = "";
-        this.currentlyEditingProjectId = null;*/
     }
 
     // Show feedback message

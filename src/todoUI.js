@@ -54,11 +54,49 @@ class TodoUI {
     displayTodosUI(todos = this.todoManager.getAllTodos()) {
         const todoContainer = document.querySelector(".main-content");
         todoContainer.innerHTML = "";
-
+        
+        // Create and append labels
+        const labels = ['Completed', 'Title', 'Description', 'Due Date', 'Priority', 'Project'];
+        const labelsContainer = document.createElement('div');
+        labelsContainer.className = 'todo-labels';
+        labels.forEach(label => {
+            const labelElement = document.createElement('span');
+            labelElement.className = `todo-item-label todo-label-${label.toLowerCase().replace(' ','-')}`;
+            labelElement.textContent = label;
+            labelsContainer.appendChild(labelElement);
+        });
+        todoContainer.appendChild(labelsContainer);
+        
         todos.forEach(todo => {
             const todoElement = this.createTodoElement(todo);
             todoContainer.appendChild(todoElement);
-        })
+        });
+
+        // Add button for adding todos
+        const addTodoContainer = document.createElement('span');
+        addTodoContainer.className = 'add-todo-container';
+        addTodoContainer.tabIndex = 0;
+        addTodoContainer.role = 'button';
+        addTodoContainer.ariaPressed = 'false';
+
+        const addTodoImg = document.createElement('img');
+        addTodoImg.src = './images/add.svg';
+        addTodoImg.alt = 'add-todo';
+        addTodoContainer.appendChild(addTodoImg);
+
+        const addTodoText = document.createElement('span');
+        addTodoText.className = 'add-todo-text';
+        addTodoText.textContent = 'Add New Todo';
+        addTodoContainer.appendChild(addTodoText);
+
+        todoContainer.appendChild(addTodoContainer);
+
+        // Event listener for opening the Add Todo modal
+        const addTodoButton = document.querySelector('.add-todo-container');
+        addTodoButton.addEventListener('click', () => {
+            const todoModal = document.querySelector('#todo-modal');
+            todoModal.style.display = 'block';
+        });
     }
 
     // Create a Todo element
@@ -81,6 +119,20 @@ class TodoUI {
                 <p class="todo-project">${projectName}</p>
             </div>
         `;
+
+        // Add a class if the todo is completed
+        if (todo.isCompleted) {
+            todoElement.classList.add('completed');
+        };
+
+        const checkbox = todoElement.querySelector(".todo-complete-checkbox");
+        checkbox.addEventListener("change", () => {
+            if (checkbox.checked) {
+                todoElement.classList.add("completed");
+            } else {
+                todoElement.classList.remove("completed");
+            }
+        });
 
         // View button
         const viewButton = document.createElement("button");

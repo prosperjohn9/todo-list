@@ -4,6 +4,34 @@
     padding: 0;
 }
 
+body {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 5rem repeat(4, 1fr) 2rem;
+    grid-template-areas: 
+    "header header"
+    "sidebar main"
+    "sidebar main"
+    "footer footer";
+    width: 100vw;
+    min-height: 100vh;
+    background-color: lightgray;
+    color: black;
+}
+
+header {
+    grid-area: header;
+    grid-row: 1;
+    position: relative;
+    text-align: center;
+    margin: 1rem;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    grid-row: 2 / -2;
+}
+
 #sidebar-toggle img {
     width: 1.5rem;
     height: 1.5rem;
@@ -14,9 +42,21 @@
     display: none;
 }
 
-header {
-    text-align: center;
-    margin: 0.5rem;
+#sidebar-toggle {
+    position: absolute;
+    top: 0.2rem;
+    left: 0.2rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0.2rem;
+    border-radius: 0.4rem;
+
+}
+
+#sidebar-toggle:hover {
+    background-color: #c4621d;
 }
 
 img {
@@ -29,6 +69,14 @@ nav a {
     align-items: center;
     text-decoration: none;
     margin-bottom: 1rem;
+    background-color: rgb(240, 240, 240);
+    border-radius: 0.4rem;
+    margin-left: 0.4rem;
+    margin-right: 0.4rem;
+}
+
+nav a:hover {
+    background-color: #c4621d;
 }
 
 li img {
@@ -36,9 +84,13 @@ li img {
 }
 
 .nav-projects{
+    margin: 2.5rem 0.8rem;
+}
+
+.projects-header-container {
     display: flex;
     align-items: center;
-    margin: 2.5rem 0.8rem;
+    padding: 0.5rem;
     gap: 1rem;
 }
 
@@ -50,23 +102,36 @@ li img {
 
 .add-project-container {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.2rem;
 }
 
 .add-project-container:hover .add-project-text {
     display: inline;
 }
 
+.project-name {
+    font-weight: 600;
+    margin-left: 0.2rem;
+}
+
+.project-item button {
+    margin: 0.2rem;
+}
+
 .feedback {
     position: fixed;
-    top: 10px;
+    top: 0.6rem;
     left: 50%;
     transform: translateX(-50%);
     background-color: #f8f8f8;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 5px;
+    border: 0.06rem solid #ddd;
+    padding: 0.6rem;
+    border-radius: 0.4rem;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
 }
 
@@ -80,11 +145,149 @@ li img {
     color: red;
 }
 
+main {
+    /*grid-area: main;
+    grid-row: 2 / -2;*/
+    position: relative;
+}
+
+.add-todo-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+    margin-right: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.2rem;
+}
+
+.add-todo-container:hover {
+    flex-direction: row-reverse;
+}
+
+.add-todo-text {
+    display: none;
+    font-size: 0.8rem;
+    transition: display 0.5s ease;
+}
+
+.add-todo-container:hover .add-todo-text {
+    display: inline;
+}
+
+.todo-labels {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.4rem;
+    width: 80vw;
+}
+
+.todo-label-completed {
+    font-weight: bolder;
+    order: -1;
+    width: 6rem;
+    margin-left: 0.4rem;
+    text-align: center;
+}
+
+.todo-label-title {
+    font-weight: bolder;
+    width: 12rem;
+    padding-left: 1rem;
+}
+
+.todo-label-description {
+    font-weight: bolder;
+    width: 24rem;
+    text-align: center;
+}
+
+.todo-label-due-date {
+    font-weight: bolder;
+    width: 8rem;
+    padding-left: 0.8rem;
+}
+
+.todo-label-priority {
+    font-weight: bolder;
+    width: 8rem;
+    padding-left: 0.8rem;
+}
+
+.todo-label-project {
+    font-weight: bolder;
+    width: 12rem;
+    padding-left: 2rem;
+}
+
+.todo-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 6rem;
+    margin-bottom: 2rem;
+    margin-right: 1.2rem;
+    width: 80vw;
+    background: linear-gradient(#f2f2f2, #d9d9d9);
+    border-radius: 0.6rem;
+}
+
+.todo-item.completed {
+    background: linear-gradient(#f2f7f5, #d3e7df);
+}
+
+.todo-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 0.8rem;
+    flex-wrap: nowrap;
+}
+
+.todo-complete-checkbox {
+    order: -1;
+    width: 6rem;
+}
+
+.todo-title {
+    font-weight: bold;
+    width: 12rem;
+    padding-left: 0.2rem;
+}
+
+.todo-description {
+    width: 24rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.todo-due-date,
+.todo-priority {
+    width: 8rem;
+}
+
+.todo-project {
+    width: 12rem;
+}
+
+.todo-item .todo-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 0.6rem;
+    margin-right: 5rem;
+    padding-bottom: 0.8rem;
+}
+
 footer img {
     margin-left: 0.25rem;
 }
 
 footer {
+    grid-area: footer;
+    grid-row: -1;
     display: flex;
     justify-content: center;
     align-items: center;
