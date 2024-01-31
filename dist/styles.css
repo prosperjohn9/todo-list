@@ -395,6 +395,8 @@ main {
 .todo-due-date,
 .todo-due-date label,
 .todo-due-date input {
+    --webkit-appearance: none;
+    appearance: none;
     color: black;
 }
 
@@ -413,6 +415,9 @@ main {
     border-radius: 0.4rem;
     text-align: center;
     border: none;
+    --webkit-appearance: none;
+    appearance: none;
+    color: black;
 }
 
 #todo-form .project-select {
@@ -430,6 +435,9 @@ main {
     border-radius: 0.4rem;
     padding-left: 0.4rem;
     border: none;
+    --webkit-appearance: none;
+    appearance: none;
+    color: black;
 }
 
 #todo-form .todo-actions {
