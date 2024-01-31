@@ -47,11 +47,36 @@ class TodoUI {
             }
         });
 
+        // Event listener for active links
         document.querySelectorAll("nav a").forEach((link) => {
             link.addEventListener("click", function () {
                 document.querySelector("nav a.active")?.classList.remove("active");
                 this.classList.add("active");
             });
+        });
+
+        // Event listener for Todo priority
+        const select = document.querySelector("#todo-priority");
+        select.addEventListener("change", () => {
+            switch (select.value) {
+                case "High":
+                    select.style.color = "red";
+                    break;
+                case "Medium":
+                    select.style.color = "orange";
+                    break;
+                case "Low":
+                    select.style.color = "green";
+                    break;
+                default:
+                    select.style.color = "black";
+            }
+        });
+
+        // Event listener for the project dropdown
+        const projectSelect = document.getElementById("project-select");
+        projectSelect.addEventListener("change", () => {
+            projectSelect.style.color = "black";
         });
     }
 
