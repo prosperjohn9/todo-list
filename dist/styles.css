@@ -392,10 +392,6 @@ main {
     border: none;
 }
 
-.todo-due-date::placeholder {
-    color: gray;
-}
-
 #todo-form .todo-priority {
     margin-left: 0.8rem;
     margin-bottom: 0.6rem;
@@ -411,10 +407,6 @@ main {
     border-radius: 0.4rem;
     text-align: center;
     border: none;
-}
-
-.todo-priority::placeholder {
-    color: gray;
 }
 
 #todo-form .project-select {
