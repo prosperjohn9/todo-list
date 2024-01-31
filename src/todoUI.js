@@ -227,6 +227,7 @@ class TodoUI {
     // Close the view Todo modal
     closeViewTodoModal() {
         document.getElementById("view-todo-modal").style.display = "none";
+        document.querySelector(".close-button").style.display = "none";
     }
 
     // Show feedback messages
@@ -322,6 +323,7 @@ class TodoUI {
 
         // Open the modal
         this.openTodoModal();
+        document.querySelector(".close-button").style.display = "block";
     }
 
     // Edit a Todo

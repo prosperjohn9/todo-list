@@ -227,6 +227,10 @@ li img {
     cursor: pointer;
 }
 
+.close-button {
+    display: none;
+}
+
 #confirm-button {
     background-color: rgb(10, 220, 10);
 }

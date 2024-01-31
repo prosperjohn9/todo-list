@@ -106,6 +106,7 @@ class ProjectUI {
     // Close the view project modal
     closeViewProjectModal() {
         document.getElementById("view-project-modal").style.display = "none";
+        document.querySelector(".close-button").style.display = "none";
     }
 
     // Show feedback message
@@ -161,6 +162,7 @@ class ProjectUI {
 
         // Open the modal
         document.getElementById("view-project-modal").style.display = "block";
+        document.querySelector(".close-button").style.display = "block";
     }
 
     // Edit a project
