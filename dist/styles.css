@@ -390,13 +390,7 @@ main {
     padding-left: 0.4rem;
     padding-right: 0.4rem;
     border: none;
-}
-
-.todo-due-date,
-.todo-due-date label,
-.todo-due-date input {
     --webkit-appearance: none;
-    appearance: none;
     color: black;
 }
 
@@ -416,7 +410,6 @@ main {
     text-align: center;
     border: none;
     --webkit-appearance: none;
-    appearance: none;
     color: black;
 }
 
@@ -436,7 +429,6 @@ main {
     padding-left: 0.4rem;
     border: none;
     --webkit-appearance: none;
-    appearance: none;
     color: black;
 }
 
