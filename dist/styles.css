@@ -27,21 +27,6 @@ header {
     margin: 1rem;
 }
 
-.sidebar {
-    grid-area: sidebar;
-    grid-row: 2 / -2;
-}
-
-#sidebar-toggle img {
-    width: 1.5rem;
-    height: 1.5rem;
-
-}
-
-.sidebar-closed {
-    display: none;
-}
-
 #sidebar-toggle {
     position: absolute;
     top: 0.2rem;
@@ -52,11 +37,19 @@ header {
     background: none;
     padding: 0.2rem;
     border-radius: 0.4rem;
-
 }
 
 #sidebar-toggle:hover {
     background-color: #c4621d;
+}
+
+.sidebar-closed {
+    display: none;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    grid-row: 2 / -2;
 }
 
 img {
@@ -187,80 +180,158 @@ li img {
     text-align: center;
 }
 
-#confirmation-dialog {
+#todo-modal {
     display: none;
     position: fixed;
     z-index: 1000;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.85);
-    color: white;
-    width: 19rem;
-    height: 6rem;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: rgb(250, 250, 250);
+    width: 20rem;
+    height: 17rem;
     border-radius: 0.6rem;
 }
 
-#confirmation-dialog h3 {
+#todo-form .todo-title {
     margin-left: 0.8rem;
     margin-top: 0.8rem;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    width: 18rem;
 }
 
-#confirmation-dialog p {
+#todo-title {
+    width: 16rem;
+    height: 1.6rem;
+    border-radius: 0.4rem;
+    padding-left: 0.4rem;
+    border: none;
+}
+
+.todo-title::placeholder {
+    color: gray;
+}
+
+#todo-form .todo-description {
     margin-left: 0.8rem;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    width: 18rem;
 }
 
-.dialog-actions {
+#todo-description {
+    width: 16rem;
+    height: 4rem;
+    border-radius: 0.4rem;
+    padding-left: 0.4rem;
+    padding-top: 0.4rem;
+    border: none;
+}
+
+.todo-description::placeholder {
+    color: gray;
+}
+
+#todo-form .todo-due-date {
+    margin-left: 0.8rem;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    width: 18rem;
+}
+
+#todo-due-date {
+    width: 8rem;
+    height: 1.6rem;
+    border-radius: 0.4rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    border: none;
+}
+
+.todo-due-date::placeholder {
+    color: gray;
+}
+
+#todo-form .todo-priority {
+    margin-left: 0.8rem;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    width: 18rem;
+}
+
+#todo-priority {
+    width: 6rem;
+    height: 1.6rem;
+    border-radius: 0.4rem;
+    text-align: center;
+    border: none;
+}
+
+.todo-priority::placeholder {
+    color: gray;
+}
+
+#todo-form .project-select {
+    margin-left: 0.8rem;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    width: 18rem;
+}
+
+#project-select {
+    width: 8.5rem;
+    height: 1.6rem;
+    border-radius: 0.4rem;
+    padding-left: 0.4rem;
+    border: none;
+}
+
+.project-select::placeholder {
+    color: gray;
+}
+
+#todo-form .todo-actions {
     display: flex;
     justify-content: flex-end;
-    gap: 0.3rem;
-    margin-right: 1.2rem;
-    margin-top: 0.4rem;
+    gap: 0.4rem;
+    margin-right: 2.4rem;
+    margin-top: 1.2rem;
 }
 
-.dialog-actions button {
+#todo-form .cancel-button {
     border: none;
-    color: white;
+    color: rgb(250, 250, 250);
     width: 4rem;
-    height: 1.2rem;
+    height: 1.4rem;
     border-radius: 0.4rem;
     cursor: pointer;
-}
-
-.close-button {
-    display: none;
-}
-
-#confirm-button {
-    background-color: rgb(10, 220, 10);
-}
-
-#cancel-button {
     background-color: rgb(230, 20, 20);
+    text-align: center;
+    padding-top: 0.08rem;
 }
 
-.feedback {
-    position: fixed;
-    top: 0.6rem;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #f8f8f8;
-    border: 0.06rem solid #ddd;
-    padding: 0.6rem;
+#todo-form #add-todo-button {
+    border: none;
+    color: rgb(250, 250, 250);
+    width: 5rem;
+    height: 1.4rem;
     border-radius: 0.4rem;
-    z-index: 1000;
-    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
-
-.feedback-success {
-    border-color: green;
-    color: green;
-}
-
-.feedback-error {
-    border-color: red;
-    color: red;
+    cursor: pointer;
+    background-color: rgb(10, 220, 10);
+    text-align: center;
+    padding-top: 0.02rem;
 }
 
 main {
@@ -397,6 +468,82 @@ main {
     gap: 0.6rem;
     margin-right: 5rem;
     padding-bottom: 0.8rem;
+}
+
+#confirmation-dialog {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    width: 19rem;
+    height: 6rem;
+    border-radius: 0.6rem;
+}
+
+#confirmation-dialog h3 {
+    margin-left: 0.8rem;
+    margin-top: 0.8rem;
+}
+
+#confirmation-dialog p {
+    margin-left: 0.8rem;
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.3rem;
+    margin-right: 1.2rem;
+    margin-top: 0.4rem;
+}
+
+.dialog-actions button {
+    border: none;
+    color: white;
+    width: 4rem;
+    height: 1.2rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+}
+
+.close-button {
+    display: none;
+}
+
+#confirm-button {
+    background-color: rgb(10, 220, 10);
+}
+
+#cancel-button {
+    background-color: rgb(230, 20, 20);
+}
+
+.feedback {
+    position: fixed;
+    top: 0.6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f8f8f8;
+    border: 0.06rem solid #ddd;
+    padding: 0.6rem;
+    border-radius: 0.4rem;
+    z-index: 1000;
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.feedback-success {
+    border-color: green;
+    color: green;
+}
+
+.feedback-error {
+    border-color: red;
+    color: red;
 }
 
 footer img {
