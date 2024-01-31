@@ -392,6 +392,12 @@ main {
     border: none;
 }
 
+.todo-due-date,
+.todo-due-date label,
+.todo-due-date input {
+    color: black;
+}
+
 #todo-form .todo-priority {
     margin-left: 0.8rem;
     margin-bottom: 0.6rem;
