@@ -50,7 +50,9 @@ header {
     border-radius: 0.4rem;
 }
 
-#sidebar-toggle:hover {
+#sidebar-toggle:hover,
+nav a:hover,
+nav a.active {
     background-color: #c4621d;
 }
 
@@ -80,14 +82,6 @@ nav a {
     margin-right: 0.4rem;
 }
 
-nav a.active {
-    background-color: #c4621d;
-}
-
-nav a:hover {
-    background-color: #c4621d;
-}
-
 li img {
     margin: 0.5rem;
 }
@@ -103,13 +97,15 @@ li img {
     gap: 1rem;
 }
 
-.add-project-text {
+.add-project-text,
+.add-todo-text {
     display: none;
     font-size: 0.8rem;
     transition: display 0.5s ease;
 }
 
-.add-project-container {
+.add-project-container,
+.add-todo-container {
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -117,7 +113,8 @@ li img {
     gap: 0.2rem;
 }
 
-.add-project-container:hover .add-project-text {
+.add-project-container:hover .add-project-text,
+.add-todo-container:hover .add-todo-text {
     display: inline;
 }
 
@@ -130,7 +127,8 @@ li img {
     margin: 0.2rem;
 }
 
-#project-modal {
+#project-modal,
+#todo-modal {
     display: none;
     position: fixed;
     z-index: 1000;
@@ -139,9 +137,12 @@ li img {
     transform: translate(-50%, -50%);
     background-color: rgba(0, 0, 0, 0.9);
     color: rgb(250, 250, 250);
+    border-radius: 0.6rem;
+}
+
+#project-modal {
     width: 18rem;
     height: 4.8rem;
-    border-radius: 0.6rem;
 }
 
 .project-name {
@@ -157,11 +158,14 @@ li img {
     border: none;
 }
 
-#project-name::placeholder {
+#project-name::placeholder,
+.todo-title::placeholder,
+.todo-description::placeholder {
     color: gray;
 }
 
-.project-actions {
+.project-actions,
+.dialog-actions {
     display: flex;
     justify-content: flex-end;
     gap: 0.3rem;
@@ -169,26 +173,34 @@ li img {
     margin-top: 0.5rem;
 }
 
-.cancel-project-button {
+.cancel-project-button,
+#todo-form .cancel-button {
     border: none;
     color: rgb(250, 250, 250);
     width: 4rem;
-    height: 1.2rem;
     border-radius: 0.4rem;
     cursor: pointer;
     background-color: rgb(230, 20, 20);
     text-align: center;
 }
 
-.save-project {
+.cancel-project-button {
+    height: 1.2rem;
+}
+
+.save-project,
+#todo-form #add-todo-button {
     border: none;
     color: rgb(250, 250, 250);
-    width: 6rem;
-    height: 1.2rem;
     border-radius: 0.4rem;
     cursor: pointer;
     background-color: rgb(10, 220, 10);
     text-align: center;
+}
+
+.save-project {
+    width: 6rem;
+    height: 1.2rem;
 }
 
 main {
@@ -201,26 +213,11 @@ main {
     position: absolute;
     bottom: 0;
     right: 0;
-    cursor: pointer;
     margin-right: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 0.2rem;
 }
 
 .add-todo-container:hover {
     flex-direction: row-reverse;
-}
-
-.add-todo-text {
-    display: none;
-    font-size: 0.8rem;
-    transition: display 0.5s ease;
-}
-
-.add-todo-container:hover .add-todo-text {
-    display: inline;
 }
 
 .todo-item {
@@ -235,10 +232,14 @@ main {
     border-radius: 0.6rem;
 }
 
-.todo-labels {
+.todo-labels,
+.todo-info {
     display: grid;
     grid-template-columns: 1fr 1fr 3fr 1fr 1fr 1fr;
     align-items: center;
+}
+
+.todo-labels {
     margin-bottom: 0.4rem;
     gap: 0.8rem;
     font-weight: bolder;
@@ -254,9 +255,6 @@ main {
 }
 
 .todo-info {
-    display: grid;
-    grid-template-columns: 1fr 1fr 3fr 1fr 1fr 1fr;
-    align-items: center;
     gap: 0.2rem;
     padding-top: 0.8rem;
 }
@@ -305,27 +303,33 @@ main {
 }
 
 #todo-modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.9);
-    color: rgb(250, 250, 250);
     width: 20rem;
     height: 17rem;
-    border-radius: 0.6rem;
 }
 
 #todo-form .todo-title {
-    margin-left: 0.8rem;
     margin-top: 0.8rem;
+}
+
+#todo-form .todo-title,
+#todo-form .todo-description,
+#todo-form .todo-due-date,
+#todo-form .todo-priority,
+#todo-form .project-select {
+    margin-left: 0.8rem;
     margin-bottom: 0.6rem;
     display: flex;
     align-items: center;
     gap: 0.4rem;
     width: 18rem;
+}
+
+#todo-form .todo-priority {
+    margin-left: -0.2rem;
+}
+
+#todo-form .project-select {
+    margin-left: 1rem;
 }
 
 #todo-title {
@@ -336,19 +340,6 @@ main {
     border: none;
 }
 
-.todo-title::placeholder {
-    color: gray;
-}
-
-#todo-form .todo-description {
-    margin-left: 0.8rem;
-    margin-bottom: 0.6rem;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    width: 18rem;
-}
-
 #todo-description {
     width: 16rem;
     height: 4rem;
@@ -356,19 +347,6 @@ main {
     padding-left: 0.4rem;
     padding-top: 0.4rem;
     border: none;
-}
-
-.todo-description::placeholder {
-    color: gray;
-}
-
-#todo-form .todo-due-date {
-    margin-left: 0.8rem;
-    margin-bottom: 0.6rem;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    width: 18rem;
 }
 
 #todo-due-date {
@@ -382,15 +360,6 @@ main {
     color: black;
 }
 
-#todo-form .todo-priority {
-    margin-left: 0.8rem;
-    margin-bottom: 0.6rem;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    width: 18rem;
-}
-
 #todo-priority {
     width: 6rem;
     height: 1.6rem;
@@ -399,15 +368,6 @@ main {
     border: none;
     --webkit-appearance: none;
     color: black;
-}
-
-#todo-form .project-select {
-    margin-left: 0.8rem;
-    margin-bottom: 0.6rem;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    width: 18rem;
 }
 
 #project-select {
@@ -429,26 +389,13 @@ main {
 }
 
 #todo-form .cancel-button {
-    border: none;
-    color: rgb(250, 250, 250);
-    width: 4rem;
     height: 1.4rem;
-    border-radius: 0.4rem;
-    cursor: pointer;
-    background-color: rgb(230, 20, 20);
-    text-align: center;
     padding-top: 0.08rem;
 }
 
 #todo-form #add-todo-button {
-    border: none;
-    color: rgb(250, 250, 250);
     width: 5rem;
     height: 1.4rem;
-    border-radius: 0.4rem;
-    cursor: pointer;
-    background-color: rgb(10, 220, 10);
-    text-align: center;
     padding-top: 0.02rem;
 }
 
@@ -473,14 +420,6 @@ main {
 
 #confirmation-dialog p {
     margin-left: 0.8rem;
-}
-
-.dialog-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.3rem;
-    margin-right: 1.2rem;
-    margin-top: 0.4rem;
 }
 
 .dialog-actions button {
@@ -524,8 +463,8 @@ main {
 }
 
 .feedback-error {
-    border-color: red;
-    color: red;
+    border-color: rgb(230, 20, 20);
+    color: rgb(230, 20, 20);
 }
 
 footer img {
