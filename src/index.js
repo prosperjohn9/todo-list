@@ -17,8 +17,10 @@ todoUI.displayAllTodos();
 document.addEventListener("DOMContentLoaded", function () {
     const sidebar = document.querySelector(".sidebar");
     const toggleButton = document.getElementById("sidebar-toggle");
+    const body = document.querySelector("body");
 
     toggleButton.addEventListener("click", () => {
         sidebar.classList.toggle("sidebar-closed");
+        body.classList.toggle("sidebar-closed");
     });
 });

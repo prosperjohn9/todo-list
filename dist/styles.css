@@ -19,6 +19,17 @@ body {
     color: black;
 }
 
+body.sidebar-closed {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 5rem repeat(4, 1fr) 2rem;
+    grid-template-areas:
+        "header header"
+        "main main"
+        "main main"
+        "footer footer";
+}
+
 header {
     grid-area: header;
     grid-row: 1;
@@ -212,51 +223,6 @@ main {
     display: inline;
 }
 
-.todo-labels {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.4rem;
-    width: 80vw;
-}
-
-.todo-label-completed {
-    font-weight: bolder;
-    order: -1;
-    width: 6rem;
-    margin-left: 0.4rem;
-    text-align: center;
-}
-
-.todo-label-title {
-    font-weight: bolder;
-    width: 12rem;
-    padding-left: 1rem;
-}
-
-.todo-label-description {
-    font-weight: bolder;
-    width: 24rem;
-    text-align: center;
-}
-
-.todo-label-due-date {
-    font-weight: bolder;
-    width: 8rem;
-    padding-left: 0.8rem;
-}
-
-.todo-label-priority {
-    font-weight: bolder;
-    width: 8rem;
-    padding-left: 0.8rem;
-}
-
-.todo-label-project {
-    font-weight: bolder;
-    width: 12rem;
-    padding-left: 2rem;
-}
-
 .todo-item {
     display: flex;
     flex-direction: column;
@@ -264,9 +230,23 @@ main {
     height: 6rem;
     margin-bottom: 2rem;
     margin-right: 1.2rem;
-    width: 80vw;
+    margin-left: 0.6rem;
     background: linear-gradient(#f2f2f2, #d9d9d9);
     border-radius: 0.6rem;
+}
+
+.todo-labels {
+    display: grid;
+    grid-template-columns: 1fr 1fr 3fr 1fr 1fr 1fr;
+    align-items: center;
+    margin-bottom: 0.4rem;
+    gap: 0.8rem;
+    font-weight: bolder;
+}
+
+.todo-label-completed,
+.todo-label-description {
+    text-align: center;
 }
 
 .todo-item.completed {
@@ -274,33 +254,33 @@ main {
 }
 
 .todo-info {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 3fr 1fr 1fr 1fr;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.2rem;
     padding-top: 0.8rem;
-    flex-wrap: nowrap;
-}
-
-.todo-complete-checkbox {
-    order: -1;
-    width: 6rem;
 }
 
 .todo-title {
     font-weight: bold;
-    width: 12rem;
-    padding-left: 0.2rem;
+    text-align: left;
 }
 
 .todo-description {
-    width: 24rem;
     text-overflow: ellipsis;
     overflow: hidden;
 }
 
-.todo-due-date,
+.todo-due-date {
+    padding-left: 0.2rem;
+}
+
 .todo-priority {
-    width: 8rem;
+    padding-left: 1.2rem;
+}
+
+.todo-project {
+    padding-right: 0.8rem;
 }
 
 .priority-high {
@@ -315,16 +295,12 @@ main {
     color: green;
 }
 
-.todo-project {
-    width: 12rem;
-}
-
 .todo-item .todo-actions {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
     gap: 0.6rem;
-    margin-right: 5rem;
+    margin-right: 2rem;
     padding-bottom: 0.8rem;
 }
 
