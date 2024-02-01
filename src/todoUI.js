@@ -137,7 +137,12 @@ class TodoUI {
             document.getElementById("todo-title").value = '';
             document.getElementById("todo-description").value = '';
             document.getElementById("todo-due-date").value = '';
-            document.getElementById("todo-priority").value = 'High';
+            const todoPriority = document.getElementById("todo-priority");
+            todoPriority.value = 'High';
+            todoPriority.style.color = 'red';
+            const projectSelect = document.getElementById("project-select");
+            projectSelect.value = "";
+            projectSelect.style.color = "black";
         });
     }
 

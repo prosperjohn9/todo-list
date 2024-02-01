@@ -426,7 +426,7 @@ main {
     width: 8.5rem;
     height: 1.6rem;
     border-radius: 0.4rem;
-    padding-left: 0.4rem;
+    text-align: center;
     border: none;
     --webkit-appearance: none;
     color: black;
