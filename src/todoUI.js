@@ -60,10 +60,10 @@ class TodoUI {
         select.addEventListener("change", () => {
             switch (select.value) {
                 case "High":
-                    select.style.color = "red";
+                    select.style.color = "rgb(230, 20, 20)";
                     break;
                 case "Medium":
-                    select.style.color = "orange";
+                    select.style.color = "#c4621d";
                     break;
                 case "Low":
                     select.style.color = "green";
@@ -156,13 +156,29 @@ class TodoUI {
         const project = this.projectManager.getProject(todo.project);
         const projectName = project ? project.name : "Default Project";
 
+        // Determine the priority class
+        let priorityClass;
+        switch (todo.priority) {
+            case 'High':
+                priorityClass = 'priority-high';
+                break;
+            case 'Medium':
+                priorityClass = 'priority-medium';
+                break;
+            case 'Low':
+                priorityClass = 'priority-low';
+                break;
+            default:
+                priorityClass = '';
+        }
+
         todoElement.innerHTML = `
             <div class="todo-info">
                 <input type="checkbox" id="todo-${todo.id}" ${todo.isCompleted ? "checked" : ""} class="todo-complete-checkbox">
                 <label for="todo-${todo.id}" class="todo-title">${todo.title}</label>
                 <p class="todo-description">${todo.description}</p>
                 <p class="todo-due-date">${todo.dueDate}</p>
-                <p class="todo-priority">${todo.priority}</p>
+                <p class="todo-priority ${priorityClass}">${todo.priority}</p>
                 <p class="todo-project">${projectName}</p>
             </div>
         `;

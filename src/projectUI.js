@@ -25,7 +25,8 @@ class ProjectUI {
         const addProjectButton = document.querySelector(".add-project-container");
         addProjectButton.addEventListener("click", () => {
             this.currentlyEditingProjectId = null;
-            this.openProjectModal()
+            this.openProjectModal();
+            document.getElementById("project-name").value = "";
         });
 
         // Event listener for cancelling the project modal 

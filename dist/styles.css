@@ -303,6 +303,18 @@ main {
     width: 8rem;
 }
 
+.priority-high {
+    color: rgb(230, 20, 20);
+}
+
+.priority-medium {
+    color: #c4621d;
+}
+
+.priority-low {
+    color: green;
+}
+
 .todo-project {
     width: 12rem;
 }
