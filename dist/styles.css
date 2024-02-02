@@ -223,6 +223,10 @@ li img {
     margin-top: -0.4rem;
 }
 
+.close-button {
+    margin-top: -2rem;
+}
+
 #view-project-name {
     text-align: center;
     margin: 0.5rem 0;
@@ -238,19 +242,19 @@ li img {
     margin-bottom: 0.5rem;
 }
 
-#view-project-todos::-webkit-scrollbar {
-    width: 0.8rem;
-}
-
 #view-project-todos::-webkit-scrollbar-track {
-    background: rgb(250, 250, 250);
+    background: black;
+    border-radius: 4rem;
 }
 
-#view-project-todos::-webkit-scrollbar-thumb {
+#view-project-todos::-webkit-scrollbar-thumb,
+#view-todo-modal::-webkit-scrollbar-thumb {
     background: lightgray;
+    border-radius: 4rem;
 }
 
-#view-project-todos::-webkit-scrollbar-thumb:hover {
+#view-project-todos::-webkit-scrollbar-thumb:hover,
+#view-todo-modal::-webkit-scrollbar-thumb:hover {
     background: gray;
 }
 
@@ -275,7 +279,6 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 6rem;
     margin-bottom: 2rem;
     margin-right: 1.2rem;
     margin-left: 0.6rem;
@@ -306,16 +309,19 @@ main {
 }
 
 .todo-info {
-    gap: 0.2rem;
-    padding-top: 0.8rem;
+    gap: 0.6rem;
+    padding: 0.8rem 0;
 }
 
 .todo-title {
     font-weight: bold;
     text-align: left;
+    margin-left: -1.2rem;
 }
 
-.todo-description {
+.todo-description,
+.todo-title,
+.todo-project {
     text-overflow: ellipsis;
     overflow: hidden;
 }
@@ -452,6 +458,41 @@ main {
     padding-top: 0.02rem;
 }
 
+#view-todo-modal {
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+#view-todo-title,
+#view-todo-description,
+#view-todo-due-date,
+#view-todo-priority,
+#view-todo-project,
+#view-todo-status,
+#view-todo-completed {
+    margin-left: 1.2rem;
+    margin-bottom: 0.4rem;
+}
+
+#view-todo-title {
+    margin-top: 2rem;
+}
+
+#view-todo-description {
+    word-wrap: break-word;
+    margin-right: 0.8rem;
+}
+
+#view-todo-completed {
+    margin-bottom: 1.2rem;
+}
+
+#view-todo-modal::-webkit-scrollbar-track {
+    background: black;
+    border-radius: 4rem;
+    margin: 0 0.2rem;
+}
+
 #confirmation-dialog {
     display: none;
     position: fixed;
@@ -482,10 +523,6 @@ main {
     height: 1.2rem;
     border-radius: 0.4rem;
     cursor: pointer;
-}
-
-.close-button {
-    display: none;
 }
 
 #confirm-button {

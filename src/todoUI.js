@@ -370,9 +370,17 @@ class TodoUI {
         document.getElementById("view-todo-title").textContent = `Title: ${todo.title}`;
         document.getElementById("view-todo-description").textContent = `Description: ${todo.description}`;
         document.getElementById("view-todo-due-date").textContent = `Due Date: ${todo.dueDate}`;
-        document.getElementById("view-todo-priority").textContent = `Priority: ${todo.priority}`;
+        const priorityElement = document.getElementById("view-todo-priority");
+        priorityElement.textContent = `Priority: ${todo.priority}`;
+        priorityElement.className = `priority-${todo.priority.toLowerCase()}`;
         document.getElementById("view-todo-project").textContent = `Project: ${projectName}`;
-        document.getElementById("view-todo-completed").textContent = `Status: ${todo.isCompleted ? "Completed" : "Not Completed"}`;
+        const completedElement = document.getElementById("view-todo-completed");
+        completedElement.textContent = `Status: ${
+          todo.isCompleted ? "Completed" : "Not Completed"
+        }`;
+        completedElement.style.color = todo.isCompleted
+          ? "green"
+          : "rgb(230, 20, 20)";
 
         // Open the modal
         this.openViewTodoModal();
