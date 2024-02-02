@@ -33,9 +33,7 @@ class ProjectUI {
         document.querySelector(".cancel-project-button").addEventListener("click", () => this.closeProjectModal());
 
         // Event listener for closing the project modal
-        document.querySelectorAll(".close-button").forEach(button => {
-            button.addEventListener("click", () => this.closeViewProjectModal());
-        }) 
+        document.querySelector(".close-view-project-button").addEventListener("click", () => this.closeViewProjectModal());
     }
 
     // Display all projects
@@ -87,6 +85,12 @@ class ProjectUI {
         document.getElementById("project-modal").style.display = "block";
     }
 
+    // Open the view project modal
+    openViewProjectModal() {
+        document.getElementById("view-project-modal").style.display = "block";
+        document.querySelector(".close-view-project-button").style.display = "block";
+    }
+
     // Open the edit project modal
     openEditProjectModal(projectId) {
         const project = this.projectManager.getProject(projectId);
@@ -107,7 +111,7 @@ class ProjectUI {
     // Close the view project modal
     closeViewProjectModal() {
         document.getElementById("view-project-modal").style.display = "none";
-        document.querySelector(".close-button").style.display = "none";
+        document.querySelector(".close-view-project-button").style.display = "none";
     }
 
     // Show feedback message
@@ -144,6 +148,7 @@ class ProjectUI {
         }
 
         // Populate the modal with project details
+        document.querySelector(".close-button").style.display = "block";
         document.getElementById("view-project-name").textContent = project.name;
         const projectTodoList = document.getElementById("view-project-todos");
         projectTodoList.innerHTML = "";
@@ -155,15 +160,14 @@ class ProjectUI {
             const todoElement = document.createElement("li");
             todoElement.innerHTML = `
                 <strong>${todo.title}</strong> <br>
-                Priority: ${todo.priority} <br> 
+                <span class="priority-${todo.priority.toLowerCase()}">Priority: ${todo.priority}</span> <br> 
                 Due Date: ${todo.dueDate}
             `;
             projectTodoList.appendChild(todoElement);
         });
 
         // Open the modal
-        document.getElementById("view-project-modal").style.display = "block";
-        document.querySelector(".close-button").style.display = "block";
+        this.openViewProjectModal();
     }
 
     // Edit a project

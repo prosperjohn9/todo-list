@@ -128,7 +128,9 @@ li img {
 }
 
 #project-modal,
-#todo-modal {
+#todo-modal,
+#view-todo-modal,
+#view-project-modal {
     display: none;
     position: fixed;
     z-index: 1000;
@@ -201,6 +203,55 @@ li img {
 .save-project {
     width: 6rem;
     height: 1.2rem;
+}
+
+.modal-content {
+    position: relative;
+}
+
+.close-button,
+.close-view-project-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    color: rgb(230, 20, 20);
+    margin-right: 0.8rem;
+    margin-top: -0.4rem;
+}
+
+#view-project-name {
+    text-align: center;
+    margin: 0.5rem 0;
+}
+
+#view-project-todos {
+    margin-left: 2rem;
+    max-height: 14rem;
+    overflow-y: auto;
+}
+
+#view-project-todos li {
+    margin-bottom: 0.5rem;
+}
+
+#view-project-todos::-webkit-scrollbar {
+    width: 0.8rem;
+}
+
+#view-project-todos::-webkit-scrollbar-track {
+    background: rgb(250, 250, 250);
+}
+
+#view-project-todos::-webkit-scrollbar-thumb {
+    background: lightgray;
+}
+
+#view-project-todos::-webkit-scrollbar-thumb:hover {
+    background: gray;
 }
 
 main {
@@ -302,7 +353,9 @@ main {
     padding-bottom: 0.8rem;
 }
 
-#todo-modal {
+#todo-modal,
+#view-todo-modal,
+#view-project-modal {
     width: 20rem;
     height: 17rem;
 }

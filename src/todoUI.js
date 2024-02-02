@@ -1,5 +1,6 @@
 import TodoManager from "./todoManager.js";
 import ProjectManager from "./projectManager.js";
+import { th } from "date-fns/locale";
 
 
 class TodoUI { 
@@ -240,6 +241,12 @@ class TodoUI {
         document.getElementById("todo-modal").style.display = "block";
     }
 
+    // Open the view Todo modal
+    openViewTodoModal() {
+        document.getElementById("view-todo-modal").style.display = "block";
+        document.querySelector(".close-button").style.display = "block";
+    }
+
     // Open editing modal
     openEditTodoModal(todoId) { 
         const todo = this.todoManager.getTodo(todoId);
@@ -368,8 +375,7 @@ class TodoUI {
         document.getElementById("view-todo-completed").textContent = `Status: ${todo.isCompleted ? "Completed" : "Not Completed"}`;
 
         // Open the modal
-        this.openTodoModal();
-        document.querySelector(".close-button").style.display = "block";
+        this.openViewTodoModal();
     }
 
     // Edit a Todo
