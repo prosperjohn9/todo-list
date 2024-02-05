@@ -22,7 +22,7 @@ body {
 @media (max-width: 600px) {
     img {
         width: 0.6rem;
-        height: 0.6rem;
+        height: auto;
     }
 
     nav a {
