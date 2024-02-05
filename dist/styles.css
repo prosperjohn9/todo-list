@@ -21,12 +21,12 @@ body {
 
 @media (max-width: 600px) {
     img {
-        width: 0.6rem;
-        height: auto;
+        width: 10px;
+        height: 10px;
     }
 
     nav a {
-        margin-bottom: 0.1rem;
+        margin-bottom: -2rem;
     }
 }
 
