@@ -19,6 +19,17 @@ body {
     color: black;
 }
 
+@media (max-width: 600px) {
+    img {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    nav a {
+        margin-bottom: 0.4rem;
+    }
+}
+
 body.sidebar-closed {
     display: grid;
     grid-template-columns: 1fr 4fr;
