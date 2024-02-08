@@ -608,7 +608,7 @@ main {
     }
 }
 
-@media (min-width: 600px) and (max-width: 900px) {
+@media (min-width: 600px) and (max-width: 1200px) {
     nav a {
         margin-bottom: 0.1rem;
     }
