@@ -19,17 +19,6 @@ body {
     color: black;
 }
 
-@media (max-width: 600px) {
-    img {
-        width: 10px;
-        height: 10px;
-    }
-
-    nav a {
-        margin-bottom: -2rem;
-    }
-}
-
 body.sidebar-closed {
     display: grid;
     grid-template-columns: 1fr 4fr;
@@ -566,6 +555,17 @@ main {
 .feedback-error {
     border-color: rgb(230, 20, 20);
     color: rgb(230, 20, 20);
+}
+
+@media only screen and (max-width: 600px) {
+    img {
+        width: 0.8rem;
+        height: 0.8rem;
+    }
+
+    nav a {
+        margin-bottom: 0.6rem;
+    }
 }
 
 footer img {
