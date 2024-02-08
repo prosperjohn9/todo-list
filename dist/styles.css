@@ -559,11 +559,15 @@ main {
 
 @media only screen and (max-width: 600px) {
     nav a {
-        margin-bottom: 0.1rem;
+        margin-bottom: 0.2rem;
     }
 
     .project-item button {
         display: inline;
+    }
+
+    .todo-item {
+        margin: 0.2rem;
     }
 }
 
