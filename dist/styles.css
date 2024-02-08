@@ -577,14 +577,12 @@ main {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         align-items: center;
+        justify-items: center;
     }
 
     .todo-description,
     .todo-due-date,
-    .todo-project {
-        display: none;
-    }
-
+    .todo-project,
     .todo-label-description,
     .todo-label-due-date,
     .todo-label-project {
@@ -592,7 +590,6 @@ main {
     }
 
     .todo-title {
-        text-align: center;
         overflow: hidden;
         text-overflow: ellipsis;
     }
