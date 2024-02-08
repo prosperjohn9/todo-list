@@ -591,7 +591,9 @@ main {
     }
 
     .todo-item.completed {
-        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .todo-title {
@@ -623,15 +625,20 @@ main {
     }
 
     .todo-item.completed {
-        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .todo-title,
     .todo-due-date {
-        margin-left: 0.1rem;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+    }
+
+    .todo-priority {
+        margin-right: 0.6rem;
     }
 }
 
