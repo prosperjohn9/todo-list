@@ -591,7 +591,7 @@ main {
     }
 
     .todo-item.completed {
-        justify-self: center;
+        text-align: center;
     }
 
     .todo-title {
@@ -606,7 +606,7 @@ main {
     }
 }
 
-@media (min-width: 600px) and (max-width: 900px) {
+@media (min-width: 600px) and (max-width: 1024px) {
     nav a {
         margin-bottom: 0.1rem;
     }
@@ -623,7 +623,7 @@ main {
     }
 
     .todo-item.completed {
-        justify-self: center;
+        text-align: center;
     }
 
     .todo-title,
