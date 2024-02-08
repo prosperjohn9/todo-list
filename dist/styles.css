@@ -591,9 +591,9 @@ main {
     }
 
     .todo-complete-checkbox {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .todo-title {
@@ -608,7 +608,7 @@ main {
     }
 }
 
-@media (min-width: 600px) and (max-width: 1024px) {
+@media (min-width: 600px) and (max-width: 900) {
     nav a {
         margin-bottom: 0.1rem;
     }
@@ -643,6 +643,14 @@ main {
 
     .todo-priority {
         margin-right: 0.8rem;
+    }
+}
+
+@media (min-width: 900px) {
+    .todo-complete-checkbox {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
