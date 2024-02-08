@@ -559,8 +559,11 @@ main {
 
 @media only screen and (max-width: 600px) {
     nav a {
-        margin-bottom: 0.4rem;
-        --webkit-appearance: none;
+        margin-bottom: 0.1rem;
+    }
+
+    .project-item button {
+        display: inline;
     }
 }
 
