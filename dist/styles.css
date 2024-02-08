@@ -633,6 +633,10 @@ main {
         white-space: nowrap;
     }
 
+    .todo-title {
+        margin-left: 0.08rem;
+    }
+
     .todo-priority {
         margin-right: 0.6rem;
     }
