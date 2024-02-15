@@ -478,7 +478,8 @@ main {
     margin-top: 2rem;
 }
 
-#view-todo-description {
+#view-todo-description,
+#view-todo-title {
     word-wrap: break-word;
     margin-right: 0.8rem;
 }
